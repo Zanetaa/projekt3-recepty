@@ -80,7 +80,6 @@ function nactiStorage() {
 }
 
 
-
 function vyhledavani() {
     let vyhledavanyText = document.querySelector('input[id=hledat]').value;
 
@@ -105,9 +104,21 @@ function seradit() {
 
 
 }
+let kategorie = document.getElementById("kategorie");
+kategorie.addEventListener("change", funkceKategorie)
 
-function kategorie() {
+function funkceKategorie() {
+    document.querySelector('#recepty').innerHTML = '';
+    let receptyRecepty = recepty;
+    receptyRecepty = [];
 
+    let zvolenaKategorie = kategorie.value;
+
+    for (i=0; i < recepty.length; i = i +1) {
+        if (zvolenaKategorie === recepty[i].kategorie || zvolenaKategorie === "") {
+            receptyRecepty.push(recepty[i]);
+        }
+    }
 
 }
 
