@@ -99,13 +99,25 @@ function vyhledavani() {
 
 }
 
+// https://www.geeksforgeeks.org/es6-array-filter-method/
 
-function seradit() {
+let hodnoceni = document.querySelector('#recept-hodnoceni');
+hodnoceni.addEventListener("change", funkceSeradit);
+
+function funkceSeradit() {
+document.querySelector('#recepty').innerHTML = '';
+
+let zvoleneSerazeni = hodnoceni.value;
+
+/*const result = recepty.filter(hodnoceni => hodnoceni > 4);*/
 
 
 }
+
+
+
 let kategorie = document.getElementById("kategorie");
-kategorie.addEventListener("change", funkceKategorie)
+kategorie.addEventListener("change", funkceKategorie);
 
 function funkceKategorie() {
     document.querySelector('#recepty').innerHTML = '';
