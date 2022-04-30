@@ -24,7 +24,7 @@ function vygenerujRecepty() {
 
     const seznamRecepty = document.querySelector('#recepty');
 
-    let recept =document.createElement('div');
+    let recept = document.createElement('div');
     recept.className = "recept"; /*https://www.geeksforgeeks.org/javascript-adding-a-class-name-to-the-element/*/;
     recept.dataset.index = i;
     recept.addEventListener('click', priKliknuti);
@@ -52,9 +52,39 @@ function vygenerujRecepty() {
   
 }
 
-function priKliknuti() {
+function priKliknuti(i) {
+    document.querySelector('#recept-foto').src = recepty[i].img;
+    document.querySelector('#recept-nazev').innerHTML = recepty[i].nadpis;
+    document.querySelector('#recept-popis').innerHTML = recepty[i].popis;
+    document.querySelector('#recept-hodnoceni').innerHTML ;
+    document.querySelector('#recept-kategorie').innerHTML ; 
+
+    ulozLocalStorage(i)
+}
+
+
+function ulozLocalStorage(i) {
+    let vybranyRecept = recepty[i];
+    localStorage.vybranyRecept = JSON.stringify(vybranyRecept);
+}
+
+function nactiStorage() {
+	let hodnota = localStorage.vybranyRecept;
+
+	if(hodnota === null || hodnota === undefined) {
+		vygenerujRecepty();
+	} else {
+		vybranyRecept = JSON.parse(hodnota);
+	}
 
 }
+
+
+
+
+
+
+
 
 
 
