@@ -111,6 +111,22 @@ let zvoleneSerazeni = hodnoceni.value;
 
 /*const result = recepty.filter(hodnoceni => hodnoceni > 4);*/
 
+if (zvoleneSerazeni == 1) {
+    recepty.sort(function (a, b) {
+        return b.hodnoceni - a.hodnoceni;
+    })
+    vygenerujRecepty()
+}
+if (vybraneHodnoceni == 2) {
+    recepty.sort(function (a, b) {
+        return a.hodnoceni - b.hodnoceni;
+    })
+    vygenerujRecepty()
+}
+if (vybraneHodnoceni == "") {
+    vygenerujRecepty()
+}
+
 
 }
 
