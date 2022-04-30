@@ -81,6 +81,30 @@ function nactiStorage() {
 
 
 
+function vyhledavani() {
+    let vyhledavanyText = document.querySelector('input[id=hledat]').value;
+
+    const filterRecepty = recepty.filter(item => typeof item === 'string');
+    console.log('filterRecepty');
+
+    const includeFilterRecepty = filterRecepty.filter(item => item.includes(vyhledavanyText));
+     console.log('includeFilterRecepty');
+
+}
+
+
+function serzani() {
+
+
+
+}
+
+function hodnoceni() {
+
+}
+
+
+
 
 
 
