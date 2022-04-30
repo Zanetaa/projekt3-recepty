@@ -56,8 +56,8 @@ function priKliknuti(i) {
     document.querySelector('#recept-foto').src = recepty[i].img;
     document.querySelector('#recept-nazev').innerHTML = recepty[i].nadpis;
     document.querySelector('#recept-popis').innerHTML = recepty[i].popis;
-    document.querySelector('#recept-hodnoceni').innerHTML ;
-    document.querySelector('#recept-kategorie').innerHTML ; 
+    document.querySelector('#recept-hodnoceni').innerHTML = recepty[i].hodnoceni;
+    document.querySelector('#recept-kategorie').innerHTML = recepty[i].kategorie; 
 
     ulozLocalStorage(i)
 }
@@ -84,22 +84,30 @@ function nactiStorage() {
 function vyhledavani() {
     let vyhledavanyText = document.querySelector('input[id=hledat]').value;
 
+    //tohle jsem asi nepochopila
     const filterRecepty = recepty.filter(item => typeof item === 'string');
     console.log('filterRecepty');
 
     const includeFilterRecepty = filterRecepty.filter(item => item.includes(vyhledavanyText));
      console.log('includeFilterRecepty');
+     //nebo nevím, jak dál navázat
+
+     for (let i = 0; i < recepty.length; i = i + 1) {
+         if(recepty[i].nadpis.includes(vyhledavanyText)) {
+             vygenerujRecepty()
+         }
+     }
 
 }
 
 
-function serzani() {
-
+function seradit() {
 
 
 }
 
-function hodnoceni() {
+function kategorie() {
+
 
 }
 
