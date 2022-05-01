@@ -146,16 +146,16 @@ let zvoleneSerazeni = razeni.value;
 //console.log(test);
 
 if (zvoleneSerazeni == 1) {
-
+    vygenerujRecepty(i); 
 
 }
 
 if (zvoleneSerazeni == 2) {
-
+    vygenerujRecepty(i);
 }
 
 if (zvoleneSerazeni == '') {
-
+    vygenerujRecepty(i);
 }
 
 }
