@@ -18,21 +18,23 @@ recept-hodnoceni, recept-nazev, recept-popis.
 6) Poslední vybraný recept ulož do Local Storage, aby se při novém otevření aplikace načetl.
 */
 
+const seznamRecepty = document.querySelector('#recepty');
+
+vygenerujRecepty();
 
 function vygenerujRecepty() {
-    for (let i=0; i < recepty.length; i = i+1) {
-
-    const seznamRecepty = document.querySelector('#recepty');
+    for (let i=0; i < recepty.length; i++) {
+    //console.log(recepty[i]);
 
     let recept = document.createElement('div');
     recept.className = "recept"; /*https://www.geeksforgeeks.org/javascript-adding-a-class-name-to-the-element/*/;
     recept.dataset.index = i;
-    recept.addEventListener('click', priKliknuti);
+    recept.addEventListener('click', () => priKliknuti(i));
 
     let receptObrazek = document.createElement('div');
     receptObrazek.className = "recept-obrazek";
 
-    let imgObrazek = document.createElementNS('img');
+    let imgObrazek = document.createElement('img');
     imgObrazek.src = recepty[i].img;
 
     let receptInfo = document.createElement('div');
@@ -41,16 +43,18 @@ function vygenerujRecepty() {
     let nadpis = document.createElement('h3');
     nadpis.innerHTML = recepty[i].nadpis;
 
-    seznamRecepty.appendChild(recept);
+    receptInfo.appendChild(nadpis);
+    receptObrazek.appendChild(imgObrazek);
 
     recept.appendChild(receptObrazek);
     recept.appendChild(receptInfo);
 
-    receptInfo.appendChild(nadpis);
-    receptObrazek.appendChild(imgObrazek);
+    seznamRecepty.appendChild(recept);
     }
   
 }
+
+
 
 function priKliknuti(i) {
     document.querySelector('#recept-foto').src = recepty[i].img;
@@ -66,6 +70,8 @@ function priKliknuti(i) {
 function ulozLocalStorage(i) {
     let vybranyRecept = recepty[i];
     localStorage.vybranyRecept = JSON.stringify(vybranyRecept);
+
+    nactiStorage();
 }
 
 function nactiStorage() {
@@ -75,6 +81,7 @@ function nactiStorage() {
 		vygenerujRecepty();
 	} else {
 		vybranyRecept = JSON.parse(hodnota);
+
 	}
 
 }
