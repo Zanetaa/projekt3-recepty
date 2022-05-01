@@ -108,27 +108,61 @@ function vyhledavani() {
 
 }
 
-// https://www.geeksforgeeks.org/es6-array-filter-method/
 
-let hodnoceni = document.getElementById('#recept-hodnoceni');
-hodnoceni.addEventListener("change", funkceSeradit);
+
+let razeni = document.getElementById('#razeni');
+razeni.addEventListener("change", funkceSeradit);
+
+function hodnoceni(a, b) {
+
+    if (a.hodnoceni > b.hodnoceni) {
+        return 1;
+    }
+    if (a.hodnoceni < b.hodnoceni) {
+        return -1;
+    }
+    
+    return 0;
+    
+ }
 
 function funkceSeradit() {
+
 document.querySelector('#recepty').innerHTML = '';
-
-let zvoleneSerazeni = hodnoceni.value;
-
-/*const result = recepty.filter(hodnoceni => hodnoceni > 4);*/
-
-//tady jsem se úplně ztratila
+let zvoleneSerazeni = razeni.value;
 
 
+
+//tady jsem se nějak úplně ztratila 
+
+//pokus dle: //https://www.geeksforgeeks.org/how-to-filter-object-array-based-on-attributes/
+
+//const newArrat = recepty.filter (function (i) {
+
+//   return i.hodnoceni >= 4.2;
+
+//} );
+
+//console.log(test);
+
+if (zvoleneSerazeni == 1) {
+
+
+}
+
+if (zvoleneSerazeni == 2) {
+
+}
+
+if (zvoleneSerazeni == '') {
+
+}
 
 }
 
 
 
-let kategorie = document.getElementById("recept-kategorie");
+let kategorie = document.getElementById("kategorie");
 kategorie.addEventListener("change", funkceKategorie);
 
 function funkceKategorie() {
