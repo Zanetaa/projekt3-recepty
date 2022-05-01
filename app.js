@@ -21,6 +21,7 @@ recept-hodnoceni, recept-nazev, recept-popis.
 const seznamRecepty = document.querySelector('#recepty');
 
 vygenerujRecepty();
+nactiStorage();
 
 function vygenerujRecepty() {
     for (let i=0; i < recepty.length; i++) {
@@ -55,7 +56,6 @@ function vygenerujRecepty() {
 }
 
 
-
 function priKliknuti(i) {
     document.querySelector('#recept-foto').src = recepty[i].img;
     document.querySelector('#recept-nazev').innerHTML = recepty[i].nadpis;
@@ -70,8 +70,6 @@ function priKliknuti(i) {
 function ulozLocalStorage(i) {
     let vybranyRecept = recepty[i];
     localStorage.vybranyRecept = JSON.stringify(vybranyRecept);
-
-    nactiStorage();
 }
 
 function nactiStorage() {
@@ -86,21 +84,25 @@ function nactiStorage() {
 
 }
 
+let hledat = document.querySelector('#hledat');
+hledat.addEventListener("change", vyhledavani); 
+
+
 
 function vyhledavani() {
     let vyhledavanyText = document.querySelector('input[id=hledat]').value;
 
-    //tohle jsem asi nepochopila
+    //tohle jsem asi nepochopila :D 
     const filterRecepty = recepty.filter(item => typeof item === 'string');
     console.log('filterRecepty');
 
     const includeFilterRecepty = filterRecepty.filter(item => item.includes(vyhledavanyText));
      console.log('includeFilterRecepty');
-     //nebo nevím, jak dál navázat
+     //
 
-     for (let i = 0; i < recepty.length; i = i + 1) {
+     for (let i = 0; i < recepty.length; i++) {
          if(recepty[i].nadpis.includes(vyhledavanyText)) {
-             vygenerujRecepty()
+            recepty.push(recepty[i]);
          }
      }
 
@@ -108,7 +110,7 @@ function vyhledavani() {
 
 // https://www.geeksforgeeks.org/es6-array-filter-method/
 
-let hodnoceni = document.querySelector('#recept-hodnoceni');
+let hodnoceni = document.getElementById('#recept-hodnoceni');
 hodnoceni.addEventListener("change", funkceSeradit);
 
 function funkceSeradit() {
@@ -118,40 +120,26 @@ let zvoleneSerazeni = hodnoceni.value;
 
 /*const result = recepty.filter(hodnoceni => hodnoceni > 4);*/
 
-if (zvoleneSerazeni == 1) {
-    recepty.sort(function (a, b) {
-        return b.hodnoceni - a.hodnoceni;
-    })
-    vygenerujRecepty()
-}
-if (zvoleneHodnoceni == 2) {
-    recepty.sort(function (a, b) {
-        return a.hodnoceni - b.hodnoceni;
-    })
-    vygenerujRecepty()
-}
-if (zvoleneHodnoceni == "") {
-    vygenerujRecepty()
-}
+//tady jsem se úplně ztratila
+
 
 
 }
 
 
 
-let kategorie = document.getElementById("kategorie");
+let kategorie = document.getElementById("recept-kategorie");
 kategorie.addEventListener("change", funkceKategorie);
 
 function funkceKategorie() {
     document.querySelector('#recepty').innerHTML = '';
-    let receptyRecepty = recepty;
-    receptyRecepty = [];
+    
 
     let zvolenaKategorie = kategorie.value;
 
     for (i=0; i < recepty.length; i = i +1) {
         if (zvolenaKategorie === recepty[i].kategorie || zvolenaKategorie === "") {
-            receptyRecepty.push(recepty[i]);
+            recepty.push(recepty[i]); 
         }
     }
 
