@@ -117,13 +117,13 @@ if (zvoleneSerazeni == 1) {
     })
     vygenerujRecepty()
 }
-if (vybraneHodnoceni == 2) {
+if (zvoleneHodnoceni == 2) {
     recepty.sort(function (a, b) {
         return a.hodnoceni - b.hodnoceni;
     })
     vygenerujRecepty()
 }
-if (vybraneHodnoceni == "") {
+if (zvoleneHodnoceni == "") {
     vygenerujRecepty()
 }
 
